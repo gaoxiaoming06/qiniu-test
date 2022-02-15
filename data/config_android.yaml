@@ -1,0 +1,30 @@
+appium:
+ host: http://127.0.0.1:4723/wd/hub
+ port: 4723
+
+app:
+ appActivity: com.feierlaiedu.collegelive.ui.SplashActivity
+ appPackage: com.feierlaiedu.collegelive
+
+devices:
+ device1:
+  deviceName: 192.168.21.93:5555
+  platformName: Android
+  platformVersion: '10'
+  appiumserver: http://localhost:4723/wd/hub
+  systemPort: 8201
+
+# device2:
+#  deviceName: 192.168.56.101:5555
+#  platformName: Android
+#  platformVersion: '6.0'
+#  appiumserver: http://172.20.11.11:4723/wd/hub
+#  systemPort: 8201
+#  Resolution: [1080,1920]
+
+path:
+  tests: /Users/admin1/PycharmProjects/py_appauto-master/tests
+  report: /Users/admin1/PycharmProjects/py_appauto-master/report
+
+
+
