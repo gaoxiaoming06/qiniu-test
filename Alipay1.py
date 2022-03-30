@@ -25,12 +25,12 @@ driver.implicitly_wait(5)
 
 # , "兴业银行信用卡"
 # , "招商银行信用卡"
-checkBank = ["广发银行信用卡", "交通银行信用卡", "平安银行信用卡", "建设银行信用卡"]
+checkBank = ["广发银行信用卡", "交通银行信用卡", "平安银行信用卡", "工商银行信用卡"]
 
 money = int()
 
 time.sleep(10)
-n = 16
+n = 18
 for i in range(n):
     if i == 5:
         checkBank.pop(0)
@@ -38,10 +38,8 @@ for i in range(n):
         checkBank.pop(0)
     if i == n - 2:
         checkBank.pop(0)
-    if i == 12:
-        continue
-    if i == 11:
-        continue
+    # if i <= 9:
+    #     continue
 
     driver.tap([(990, 130)])
     driver.find_element_by_xpath('//*[@text="扫一扫"]').click()
@@ -61,7 +59,7 @@ for i in range(n):
     time.sleep(3)
     if i == n - 1:
         driver.tap([(driver.get_window_size()['width'] - 15, 1600)])
-        remaining = 500 - 21 - 24 - money
+        remaining = 500 - money
         for every_char in str(remaining):
             driver.find_element_by_xpath('//*[@text="' + every_char + '"]').click()
             time.sleep(3)
@@ -73,23 +71,24 @@ for i in range(n):
     #         time.sleep(3)
     else:
         if i % 4 == 0:
-            driver.find_element_by_xpath('//*[@text="1"]').click()
-            money += 27
-        if i % 4 == 1:
-            driver.find_element_by_xpath('//*[@text="4"]').click()
-            money += 21
-        if i % 4 == 2:
-            driver.find_element_by_xpath('//*[@text="7"]').click()
-            money += 24
-        if i % 4 == 3:
             driver.find_element_by_xpath('//*[@text="3"]').click()
             money += 23
+        if i % 4 == 1:
+            driver.find_element_by_xpath('//*[@text="5"]').click()
+            money += 25
+        if i % 4 == 2:
+            driver.find_element_by_xpath('//*[@text="1"]').click()
+            money += 21
+        if i % 4 == 3:
+            driver.find_element_by_xpath('//*[@text="4"]').click()
+            money += 24
     driver.find_element_by_xpath(
         "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[2]/android.widget.RelativeLayout/android.widget.RelativeLayout/android.widget.FrameLayout/com.uc.webview.export.WebView/com.uc.webkit.bc/android.webkit.WebView/android.view.View/android.view.View/android.view.View[3]/android.view.View[2]/android.view.View[2]/android.view.View").click()
     time.sleep(3)
     driver.find_element_by_xpath(
         "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout[2]/android.widget.FrameLayout/android.widget.FrameLayout[1]/android.widget.FrameLayout[2]").click()
     time.sleep(3)
+    driver.swipe(500, 800, 500, 600, 200)
     viewAll1 = driver.find_elements_by_class_name("android.widget.TextView")
     for view1 in viewAll1:
         if view1.text == checkBank[0]:

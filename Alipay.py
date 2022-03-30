@@ -30,8 +30,9 @@ driver.find_element_by_id("com.alipay.android.widget.fortunehome:id/tab_descript
 time.sleep(2)
 driver.find_element_by_id("com.alipay.android.widget.fortunehome:id/tab_description").click()
 time.sleep(2)
-driver.find_element_by_xpath(
-    "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.TabHost/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.support.v7.widget.RecyclerView/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.support.v7.widget.RecyclerView/android.widget.FrameLayout[3]/android.widget.RelativeLayout").click()
+# driver.find_element_by_xpath(
+#     "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.TabHost/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.support.v7.widget.RecyclerView/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.support.v7.widget.RecyclerView/android.widget.FrameLayout[3]/android.widget.RelativeLayout").click()
+driver.find_element_by_xpath('//*[@text="基金"]').click()
 time.sleep(2)
 
 try:
