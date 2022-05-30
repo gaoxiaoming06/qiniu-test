@@ -6,7 +6,7 @@ from appium.webdriver.extensions.android.nativekey import AndroidKey
 desired_caps = {
     'platformName': 'Android',  # 被测手机是安卓
     'platformVersion': '10',  # 手机安卓版本
-    'deviceName': 'xxx',  # 设备名，安卓手机可以随意填写
+    'udid': '63d04786',  # 设备名，安卓手机可以随意填写
     'appPackage': 'com.eg.android.AlipayGphone',  # 启动APP Package名称
     'appActivity': '.AlipayLogin',  # 启动Activity名称
     'unicodeKeyboard': False,  # 使用自带输入法，输入中文时填True
@@ -25,20 +25,20 @@ driver.implicitly_wait(5)
 
 # , "兴业银行信用卡"
 # , "招商银行信用卡"
-checkBank = ["广发银行信用卡", "交通银行信用卡", "平安银行信用卡", "工商银行信用卡"]
+checkBank = ["交通银行信用卡", "广发银行信用卡", "平安银行信用卡", "招商银行信用卡"]
 
 money = int()
 
 time.sleep(10)
-n = 18
+n = 20
 for i in range(n):
-    if i == 5:
+    if i == 3:
         checkBank.pop(0)
     if i == 8:
         checkBank.pop(0)
-    if i == n - 2:
+    if i == n - 5:
         checkBank.pop(0)
-    # if i <= 9:
+    # if i <= 7:
     #     continue
 
     driver.tap([(990, 130)])

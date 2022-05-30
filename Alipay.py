@@ -5,7 +5,7 @@ from appium import webdriver
 desired_caps = {
     'platformName': 'Android',  # 被测手机是安卓
     'platformVersion': '10',  # 手机安卓版本
-    'deviceName': 'xxx',  # 设备名，安卓手机可以随意填写
+    'udid': '63d04786',  # 设备名，安卓手机可以随意填写
     'appPackage': 'com.eg.android.AlipayGphone',  # 启动APP Package名称
     'appActivity': '.AlipayLogin',  # 启动Activity名称
     'unicodeKeyboard': False,  # 使用自带输入法，输入中文时填True
@@ -63,8 +63,12 @@ for view1 in viewAll1:
         view1.click()
         time.sleep(2)
         try:
-            amount = driver.find_element_by_xpath(
-                "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[2]/android.widget.RelativeLayout/android.widget.RelativeLayout/android.widget.FrameLayout/com.uc.webview.export.WebView/com.uc.webkit.bc/android.webkit.WebView/android.view.View/android.view.View/android.view.View[5]/android.view.View[2]")
+            try:
+                amount = driver.find_element_by_xpath(
+                    "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[2]/android.widget.RelativeLayout/android.widget.RelativeLayout/android.widget.FrameLayout/com.uc.webview.export.WebView/com.uc.webkit.bc/android.webkit.WebView/android.view.View/android.view.View/android.view.View[5]/android.view.View[2]/android.view.View")
+            except:
+                amount = driver.find_element_by_xpath(
+                    "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[2]/android.widget.RelativeLayout/android.widget.RelativeLayout/android.widget.FrameLayout/com.uc.webview.export.WebView/com.uc.webkit.bc/android.webkit.WebView/android.view.View/android.view.View/android.view.View[7]/android.view.View[2]/android.view.View")
             print("amount: " + amount.text)
             mmm = float(str(amount.text).replace(",", ""))
             allAmount += mmm
@@ -96,8 +100,12 @@ for view1111 in viewAll2:
         view1111.click()
         time.sleep(2)
         try:
-            amount = driver.find_element_by_xpath(
-                "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[2]/android.widget.RelativeLayout/android.widget.RelativeLayout/android.widget.FrameLayout/com.uc.webview.export.WebView/com.uc.webkit.bc/android.webkit.WebView/android.view.View/android.view.View/android.view.View[5]/android.view.View[2]")
+            try:
+                amount = driver.find_element_by_xpath(
+                    "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[2]/android.widget.RelativeLayout/android.widget.RelativeLayout/android.widget.FrameLayout/com.uc.webview.export.WebView/com.uc.webkit.bc/android.webkit.WebView/android.view.View/android.view.View/android.view.View[5]/android.view.View[2]/android.view.View")
+            except:
+                amount = driver.find_element_by_xpath(
+                    "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[2]/android.widget.RelativeLayout/android.widget.RelativeLayout/android.widget.FrameLayout/com.uc.webview.export.WebView/com.uc.webkit.bc/android.webkit.WebView/android.view.View/android.view.View/android.view.View[7]/android.view.View[2]/android.view.View")
             print("amount: " + amount.text)
             mmm = float(str(amount.text).replace(",", ""))
             allAmount += mmm
@@ -129,8 +137,12 @@ for view1111 in viewAll2:
         view1111.click()
         time.sleep(2)
         try:
-            amount = driver.find_element_by_xpath(
-                "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[2]/android.widget.RelativeLayout/android.widget.RelativeLayout/android.widget.FrameLayout/com.uc.webview.export.WebView/com.uc.webkit.bc/android.webkit.WebView/android.view.View/android.view.View/android.view.View[5]/android.view.View[2]")
+            try:
+                amount = driver.find_element_by_xpath(
+                    "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[2]/android.widget.RelativeLayout/android.widget.RelativeLayout/android.widget.FrameLayout/com.uc.webview.export.WebView/com.uc.webkit.bc/android.webkit.WebView/android.view.View/android.view.View/android.view.View[5]/android.view.View[2]/android.view.View")
+            except:
+                amount = driver.find_element_by_xpath(
+                    "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[2]/android.widget.RelativeLayout/android.widget.RelativeLayout/android.widget.FrameLayout/com.uc.webview.export.WebView/com.uc.webkit.bc/android.webkit.WebView/android.view.View/android.view.View/android.view.View[7]/android.view.View[2]/android.view.View")
             print("amount: " + amount.text)
             mmm = float(str(amount.text).replace(",", ""))
             allAmount += mmm
@@ -162,8 +174,86 @@ for view1111 in viewAll2:
         view1111.click()
         time.sleep(2)
         try:
-            amount = driver.find_element_by_xpath(
-                "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[2]/android.widget.RelativeLayout/android.widget.RelativeLayout/android.widget.FrameLayout/com.uc.webview.export.WebView/com.uc.webkit.bc/android.webkit.WebView/android.view.View/android.view.View/android.view.View[5]/android.view.View[2]")
+            try:
+                amount = driver.find_element_by_xpath(
+                    "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[2]/android.widget.RelativeLayout/android.widget.RelativeLayout/android.widget.FrameLayout/com.uc.webview.export.WebView/com.uc.webkit.bc/android.webkit.WebView/android.view.View/android.view.View/android.view.View[5]/android.view.View[2]/android.view.View")
+            except:
+                amount = driver.find_element_by_xpath(
+                    "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[2]/android.widget.RelativeLayout/android.widget.RelativeLayout/android.widget.FrameLayout/com.uc.webview.export.WebView/com.uc.webkit.bc/android.webkit.WebView/android.view.View/android.view.View/android.view.View[7]/android.view.View[2]/android.view.View")
+            print("amount: " + amount.text)
+            mmm = float(str(amount.text).replace(",", ""))
+            allAmount += mmm
+            loss = mmm * ppp / 100
+            if positive == "-":
+                allLoss -= loss
+            else:
+                allLoss += loss
+            print("当前金额: " + str(mmm) + "  亏损: " + str(loss))
+        except:
+            driver.back()
+            continue
+        driver.back()
+
+time.sleep(2)
+viewAll2 = driver.find_elements_by_xpath('//*[contains(@text, "涨跌幅:")]')
+for view1111 in viewAll2:
+    # 打印
+    if "估值" in view1111.text and "涨跌幅:" in view1111.text:
+        if view1111.text in setData:
+            continue
+        print("percent: " + view1111.text)
+        str111 = ("" + view1111.text).replace("%", "").split("涨跌幅:")[1]
+        positive = str111[1:2]
+        number = str111[2:6]
+        ppp = float(number)
+        setData.add(view1111.text)
+        driver.swipe(100, 800, 100, 550)
+        view1111.click()
+        time.sleep(2)
+        try:
+            try:
+                amount = driver.find_element_by_xpath(
+                    "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[2]/android.widget.RelativeLayout/android.widget.RelativeLayout/android.widget.FrameLayout/com.uc.webview.export.WebView/com.uc.webkit.bc/android.webkit.WebView/android.view.View/android.view.View/android.view.View[5]/android.view.View[2]/android.view.View")
+            except:
+                amount = driver.find_element_by_xpath(
+                    "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[2]/android.widget.RelativeLayout/android.widget.RelativeLayout/android.widget.FrameLayout/com.uc.webview.export.WebView/com.uc.webkit.bc/android.webkit.WebView/android.view.View/android.view.View/android.view.View[7]/android.view.View[2]/android.view.View")
+            print("amount: " + amount.text)
+            mmm = float(str(amount.text).replace(",", ""))
+            allAmount += mmm
+            loss = mmm * ppp / 100
+            if positive == "-":
+                allLoss -= loss
+            else:
+                allLoss += loss
+            print("当前金额: " + str(mmm) + "  亏损: " + str(loss))
+        except:
+            driver.back()
+            continue
+        driver.back()
+
+time.sleep(2)
+viewAll2 = driver.find_elements_by_xpath('//*[contains(@text, "涨跌幅:")]')
+for view1111 in viewAll2:
+    # 打印
+    if "估值" in view1111.text and "涨跌幅:" in view1111.text:
+        if view1111.text in setData:
+            continue
+        print("percent: " + view1111.text)
+        str111 = ("" + view1111.text).replace("%", "").split("涨跌幅:")[1]
+        positive = str111[1:2]
+        number = str111[2:6]
+        ppp = float(number)
+        setData.add(view1111.text)
+        driver.swipe(100, 800, 100, 550)
+        view1111.click()
+        time.sleep(2)
+        try:
+            try:
+                amount = driver.find_element_by_xpath(
+                    "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[2]/android.widget.RelativeLayout/android.widget.RelativeLayout/android.widget.FrameLayout/com.uc.webview.export.WebView/com.uc.webkit.bc/android.webkit.WebView/android.view.View/android.view.View/android.view.View[5]/android.view.View[2]/android.view.View")
+            except:
+                amount = driver.find_element_by_xpath(
+                    "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[2]/android.widget.RelativeLayout/android.widget.RelativeLayout/android.widget.FrameLayout/com.uc.webview.export.WebView/com.uc.webkit.bc/android.webkit.WebView/android.view.View/android.view.View/android.view.View[7]/android.view.View[2]/android.view.View")
             print("amount: " + amount.text)
             mmm = float(str(amount.text).replace(",", ""))
             allAmount += mmm
