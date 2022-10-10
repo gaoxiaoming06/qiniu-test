@@ -1,7 +1,7 @@
 import time
 
+from InquirerPy import prompt
 from appium import webdriver
-from appium.webdriver.extensions.android.nativekey import AndroidKey
 
 desired_caps = {
     'platformName': 'Android',  # 被测手机是安卓
@@ -23,21 +23,29 @@ driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
 # 设置缺省等待时间
 driver.implicitly_wait(5)
 
-time.sleep(16)
+questions = [
+        {
+            "type": "list",
+            "message": "请选择一张卡片:",
+            "choices": ["光大银行信用卡", "中信银行信用卡", "建设银行信用卡", "招商银行信用卡", "工商银行信用卡", "兴业银行信用卡"],
+            "default": None,
+        }
+    ]
+
+result = prompt(questions=questions)
+
 if driver.current_activity == "com.ali.user.mobile.loginupgrade.activity.LoginActivity":
     driver.find_element_by_xpath('//*[@text="更多选项"]').click()
     driver.find_element_by_xpath('//*[@text="密码"]').click()
     driver.find_element_by_xpath('//*[@text="请输入登录密码"]').send_keys("mwj910809")
     driver.find_element_by_xpath('//*[@text="登录"]').click()
 
-# , "兴业银行信用卡"
-# , "招商银行信用卡"
-checkBank = ["交通银行信用卡", "广发银行信用卡", "平安银行信用卡", "光大银行信用卡"]
+checkBank = ["交通银行信用卡", "广发银行信用卡", "平安银行信用卡", result]
 
 money = int()
 
-time.sleep(5)
 n = 22
+number = float(input("请输入开始值："))
 for i in range(n):
     if i == 3:
         checkBank.pop(0)
@@ -45,8 +53,8 @@ for i in range(n):
         checkBank.pop(0)
     if i == n - 2:
         checkBank.pop(0)
-#     if i <= 8:
-#         continue
+    if i <= number:
+        continue
 
     print("第几个了: " + str(i))
 
