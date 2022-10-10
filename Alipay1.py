@@ -23,23 +23,32 @@ driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
 # 设置缺省等待时间
 driver.implicitly_wait(5)
 
+time.sleep(16)
+if driver.current_activity == "com.ali.user.mobile.loginupgrade.activity.LoginActivity":
+    driver.find_element_by_xpath('//*[@text="更多选项"]').click()
+    driver.find_element_by_xpath('//*[@text="密码"]').click()
+    driver.find_element_by_xpath('//*[@text="请输入登录密码"]').send_keys("mwj910809")
+    driver.find_element_by_xpath('//*[@text="登录"]').click()
+
 # , "兴业银行信用卡"
 # , "招商银行信用卡"
-checkBank = ["交通银行信用卡", "广发银行信用卡", "平安银行信用卡", "招商银行信用卡"]
+checkBank = ["交通银行信用卡", "广发银行信用卡", "平安银行信用卡", "光大银行信用卡"]
 
 money = int()
 
-time.sleep(10)
-n = 20
+time.sleep(5)
+n = 22
 for i in range(n):
     if i == 3:
         checkBank.pop(0)
     if i == 8:
         checkBank.pop(0)
-    if i == n - 5:
+    if i == n - 2:
         checkBank.pop(0)
-    # if i <= 7:
-    #     continue
+#     if i <= 8:
+#         continue
+
+    print("第几个了: " + str(i))
 
     driver.tap([(990, 130)])
     driver.find_element_by_xpath('//*[@text="扫一扫"]').click()
@@ -85,17 +94,21 @@ for i in range(n):
     driver.find_element_by_xpath(
         "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[2]/android.widget.RelativeLayout/android.widget.RelativeLayout/android.widget.FrameLayout/com.uc.webview.export.WebView/com.uc.webkit.bc/android.webkit.WebView/android.view.View/android.view.View/android.view.View[3]/android.view.View[2]/android.view.View[2]/android.view.View").click()
     time.sleep(3)
-    driver.find_element_by_xpath(
-        "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout[2]/android.widget.FrameLayout/android.widget.FrameLayout[1]/android.widget.FrameLayout[2]").click()
+    driver.find_element_by_xpath('//*[@text="查看全部"]').click()
     time.sleep(3)
-    driver.swipe(500, 800, 500, 600, 200)
     viewAll1 = driver.find_elements_by_class_name("android.widget.TextView")
     for view1 in viewAll1:
         if view1.text == checkBank[0]:
             view1.click()
             break
 
+    driver.find_element_by_xpath('//*[@text="确认付款"]').click()
+    time.sleep(2)
+    driver.back()
+    driver.find_element_by_xpath('//*[@text="使用指纹"]').click()
     driver.find_element_by_xpath('//*[@text="使用密码"]').click()
+
+    time.sleep(2)
     driver.tap([(driver.get_window_size()['width'] / 2, driver.get_window_size()['height'] - 6)])
     driver.tap([(10, 1600)])
     driver.tap([(driver.get_window_size()['width'] / 2, 1600)])
@@ -108,7 +121,7 @@ for i in range(n):
     time.sleep(6)
     # driver.tap([(driver.get_window_size()['width'] / 2, driver.get_window_size()['height'] - 20)])
     driver.back()
-    time.sleep(6)
-    driver.back()
+#     time.sleep(6)
+#     driver.back()
 
 driver.quit()

@@ -1,5 +1,6 @@
 import time
 
+import pyperclip
 from appium import webdriver
 
 desired_caps = {
@@ -22,13 +23,16 @@ driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
 # 设置缺省等待时间
 driver.implicitly_wait(5)
 
+time.sleep(16)
+if driver.current_activity == "com.ali.user.mobile.loginupgrade.activity.LoginActivity":
+    driver.find_element_by_xpath('//*[@text="更多选项"]').click()
+    driver.find_element_by_xpath('//*[@text="密码"]').click()
+    driver.find_element_by_xpath('//*[@text="请输入登录密码"]').send_keys("mwj910809")
+    driver.find_element_by_xpath('//*[@text="登录"]').click()
+
 # 根据id定位搜索位置框，点击
 time.sleep(5)
-driver.find_element_by_id("com.alipay.android.widget.fortunehome:id/tab_description").click()
-time.sleep(2)
-driver.find_element_by_id("com.alipay.android.widget.fortunehome:id/tab_description").click()
-time.sleep(2)
-driver.find_element_by_id("com.alipay.android.widget.fortunehome:id/tab_description").click()
+driver.find_element_by_xpath('//*[@text="理财"]').click()
 time.sleep(2)
 # driver.find_element_by_xpath(
 #     "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.TabHost/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.support.v7.widget.RecyclerView/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.support.v7.widget.RecyclerView/android.widget.FrameLayout[3]/android.widget.RelativeLayout").click()
@@ -36,8 +40,7 @@ driver.find_element_by_xpath('//*[@text="基金"]').click()
 time.sleep(2)
 
 try:
-    driver.find_element_by_xpath(
-        "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[2]/android.widget.RelativeLayout/android.widget.RelativeLayout/android.widget.FrameLayout/com.uc.webview.export.WebView/com.uc.webkit.bc/android.webkit.WebView/android.view.View/android.view.View[39]/android.widget.Button[2]").click()
+    driver.find_element_by_xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[2]/android.widget.RelativeLayout/android.widget.RelativeLayout/android.widget.FrameLayout/com.uc.webview.export.WebView/com.uc.webkit.bc/android.webkit.WebView/android.view.View/android.view.View[39]/android.widget.Button[2]").click()
 except:
     driver.tap([(driver.get_window_size()['width'] / 2, driver.get_window_size()['height'] - 10)])
 time.sleep(2)
@@ -269,6 +272,7 @@ for view1111 in viewAll2:
         driver.back()
 
 print("总金额: " + str(allAmount) + "  总亏损: " + str(allLoss) + "  收益率: " + str(allLoss / allAmount * 100) + "%")
+pyperclip.copy("  总亏损: " + str(allLoss) + "  收益率: " + str(allLoss / allAmount * 100) + "%")
 
 # input('**** Press to quit..')
 driver.quit()
