@@ -23,6 +23,12 @@ driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
 # 设置缺省等待时间
 driver.implicitly_wait(5)
 
+if driver.is_locked():
+    driver.press_keycode(82)
+    # print(driver.page_source)
+    driver.find_element_by_xpath('//*[@class="android.widget.EditText"]').send_keys("gjh170507")
+    driver.press_keycode(66)
+
 questions = [
         {
             "type": "list",
@@ -35,10 +41,10 @@ questions = [
 result = prompt(questions=questions)
 
 if driver.current_activity == "com.ali.user.mobile.loginupgrade.activity.LoginActivity":
-    driver.find_element_by_xpath('//*[@text="更多选项"]').click()
-    driver.find_element_by_xpath('//*[@text="密码"]').click()
-    driver.find_element_by_xpath('//*[@text="请输入登录密码"]').send_keys("mwj910809")
-    driver.find_element_by_xpath('//*[@text="登录"]').click()
+    driver.find_element_by_xpath('//*[@text="进入支付宝"]').click()
+#     driver.find_element_by_xpath('//*[@text="密码"]').click()
+#     driver.find_element_by_xpath('//*[@text="请输入登录密码"]').send_keys("mwj910809")
+#     driver.find_element_by_xpath('//*[@text="登录"]').click()
 
 checkBank = ["交通银行信用卡", "广发银行信用卡", "平安银行信用卡", result]
 

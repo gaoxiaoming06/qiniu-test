@@ -23,12 +23,18 @@ driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
 # 设置缺省等待时间
 driver.implicitly_wait(5)
 
+if driver.is_locked():
+    driver.press_keycode(82)
+    # print(driver.page_source)
+    driver.find_element_by_xpath('//*[@class="android.widget.EditText"]').send_keys("gjh170507")
+    driver.press_keycode(66)
+
 time.sleep(16)
 if driver.current_activity == "com.ali.user.mobile.loginupgrade.activity.LoginActivity":
-    driver.find_element_by_xpath('//*[@text="更多选项"]').click()
-    driver.find_element_by_xpath('//*[@text="密码"]').click()
-    driver.find_element_by_xpath('//*[@text="请输入登录密码"]').send_keys("mwj910809")
-    driver.find_element_by_xpath('//*[@text="登录"]').click()
+    driver.find_element_by_xpath('//*[@text="进入支付宝"]').click()
+#     driver.find_element_by_xpath('//*[@text="密码"]').click()
+#     driver.find_element_by_xpath('//*[@text="请输入登录密码"]').send_keys("mwj910809")
+#     driver.find_element_by_xpath('//*[@text="登录"]').click()
 
 # 根据id定位搜索位置框，点击
 time.sleep(5)
