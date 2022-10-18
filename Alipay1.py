@@ -29,24 +29,13 @@ if driver.is_locked():
     driver.find_element_by_xpath('//*[@class="android.widget.EditText"]').send_keys("gjh170507")
     driver.press_keycode(66)
 
-questions = [
-        {
-            "type": "list",
-            "message": "请选择一张卡片:",
-            "choices": ["光大银行信用卡", "中信银行信用卡", "建设银行信用卡", "招商银行信用卡", "工商银行信用卡", "兴业银行信用卡"],
-            "default": None,
-        }
-    ]
-
-result = prompt(questions=questions)
-
 if driver.current_activity == "com.ali.user.mobile.loginupgrade.activity.LoginActivity":
     driver.find_element_by_xpath('//*[@text="进入支付宝"]').click()
 #     driver.find_element_by_xpath('//*[@text="密码"]').click()
 #     driver.find_element_by_xpath('//*[@text="请输入登录密码"]').send_keys("mwj910809")
 #     driver.find_element_by_xpath('//*[@text="登录"]').click()
 
-checkBank = ["交通银行信用卡", "广发银行信用卡", "平安银行信用卡", result]
+checkBank = ["交通银行信用卡", "广发银行信用卡", "平安银行信用卡"]
 
 money = int()
 
@@ -59,6 +48,16 @@ for i in range(n):
         checkBank.pop(0)
     if i == n - 2:
         checkBank.pop(0)
+        questions = [
+            {
+                "type": "list",
+                "message": "请选择一张卡片:",
+                "choices": ["光大银行信用卡", "中信银行信用卡", "建设银行信用卡", "招商银行信用卡", "工商银行信用卡", "兴业银行信用卡"],
+                "default": None,
+            }
+        ]
+        result = prompt(questions=questions)
+        checkBank.append(result[0])
     if i <= number:
         continue
 
@@ -69,6 +68,10 @@ for i in range(n):
     time.sleep(2)
     driver.find_element_by_id("com.alipay.mobile.scan:id/title_bar_album").click()
     time.sleep(2)
+    driver.swipe(500, 800, 500, 100, 200)
+    driver.swipe(500, 800, 500, 100, 200)
+    driver.swipe(500, 800, 500, 100, 200)
+    driver.swipe(500, 800, 500, 100, 200)
     driver.swipe(500, 800, 500, 100, 200)
     driver.swipe(500, 800, 500, 100, 200)
     driver.swipe(500, 800, 500, 100, 200)
@@ -118,9 +121,13 @@ for i in range(n):
 
     driver.find_element_by_xpath('//*[@text="确认付款"]').click()
     time.sleep(2)
-    driver.back()
-    driver.find_element_by_xpath('//*[@text="使用指纹"]').click()
-    driver.find_element_by_xpath('//*[@text="使用密码"]').click()
+    if "使用刷脸" in driver.page_source:
+        driver.find_element_by_xpath('//*[@text="使用刷脸"]').click()
+        driver.back()
+        driver.find_element_by_xpath('//*[@text="输入密码"]').click()
+#     driver.find_element_by_xpath('//*[@text="使用指纹"]').click()
+    if "使用密码" in driver.page_source:
+        driver.find_element_by_xpath('//*[@text="使用密码"]').click()
 
     time.sleep(2)
     driver.tap([(driver.get_window_size()['width'] / 2, driver.get_window_size()['height'] - 6)])
