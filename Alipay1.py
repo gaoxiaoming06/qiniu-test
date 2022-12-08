@@ -154,9 +154,12 @@ for i in range(n):
         time.sleep(2)
         driver.back()
         driver.find_element_by_xpath('//*[@text="输入密码"]').click()
-#     driver.find_element_by_xpath('//*[@text="使用指纹"]').click()
+    if "使用指纹" in driver.page_source:
+        if not ("请输入支付密码" in driver.page_source):
+            driver.find_element_by_xpath('//*[@text="使用指纹"]').click()
     if "使用密码" in driver.page_source:
         driver.find_element_by_xpath('//*[@text="使用密码"]').click()
+
 
     time.sleep(2)
     driver.tap([(driver.get_window_size()['width'] / 2, driver.get_window_size()['height'] - 6)])
