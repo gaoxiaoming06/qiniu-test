@@ -35,7 +35,7 @@ if driver.current_activity == "com.ali.user.mobile.loginupgrade.activity.LoginAc
 #     driver.find_element_by_xpath('//*[@text="请输入登录密码"]').send_keys("mwj910809")
 #     driver.find_element_by_xpath('//*[@text="登录"]').click()
 
-checkBank = ["交通银行信用卡", "广发银行信用卡", "平安银行信用卡"]
+checkBank = ["交通银行信用卡", "广发银行信用卡", "中信银行信用卡"]
 
 money = int()
 
@@ -46,13 +46,37 @@ for i in range(n):
         checkBank.pop(0)
     if i == 8:
         checkBank.pop(0)
-    if i == n - 2:
+    if i == 13:
         checkBank.pop(0)
         questions = [
             {
                 "type": "list",
                 "message": "请选择一张卡片:",
-                "choices": ["光大银行信用卡", "中信银行信用卡", "建设银行信用卡", "招商银行信用卡", "工商银行信用卡", "兴业银行信用卡"],
+                "choices": ["光大银行信用卡", "中信银行信用卡", "上海银行信用卡", "浦发银行信用卡", "平安银行信用卡", "建设银行信用卡", "招商银行信用卡", "工商银行信用卡", "兴业银行信用卡"],
+                "default": None,
+            }
+        ]
+        result = prompt(questions=questions)
+        checkBank.append(result[0])
+    if i == 16:
+        checkBank.pop(0)
+        questions = [
+            {
+                "type": "list",
+                "message": "请选择一张卡片:",
+                "choices": ["光大银行信用卡", "中信银行信用卡", "浦发银行信用卡", "平安银行信用卡", "建设银行信用卡", "招商银行信用卡", "工商银行信用卡", "兴业银行信用卡"],
+                "default": None,
+            }
+        ]
+        result = prompt(questions=questions)
+        checkBank.append(result[0])
+    if i == 19:
+        checkBank.pop(0)
+        questions = [
+            {
+                "type": "list",
+                "message": "请选择一张卡片:",
+                "choices": ["光大银行信用卡", "中信银行信用卡", "浦发银行信用卡", "平安银行信用卡", "建设银行信用卡", "招商银行信用卡", "工商银行信用卡", "兴业银行信用卡"],
                 "default": None,
             }
         ]
@@ -61,7 +85,7 @@ for i in range(n):
     if i <= number:
         continue
 
-    print("第几个了: " + str(i))
+    print("第几个了: " + str(i) + "  " + str(checkBank))
 
     driver.tap([(990, 130)])
     driver.find_element_by_xpath('//*[@text="扫一扫"]').click()
@@ -113,16 +137,21 @@ for i in range(n):
     time.sleep(3)
     driver.find_element_by_xpath('//*[@text="查看全部"]').click()
     time.sleep(3)
-    viewAll1 = driver.find_elements_by_class_name("android.widget.TextView")
-    for view1 in viewAll1:
-        if view1.text == checkBank[0]:
-            view1.click()
-            break
+    findBank = bool()
+    while not findBank:
+        viewAll1 = driver.find_elements_by_class_name("android.widget.TextView")
+        for view1 in viewAll1:
+            if view1.text == checkBank[0]:
+                view1.click()
+                findBank = 1
+                break
+        driver.swipe(500, 800, 500, 600, 200)
 
     driver.find_element_by_xpath('//*[@text="确认付款"]').click()
     time.sleep(2)
     if "使用刷脸" in driver.page_source:
         driver.find_element_by_xpath('//*[@text="使用刷脸"]').click()
+        time.sleep(2)
         driver.back()
         driver.find_element_by_xpath('//*[@text="输入密码"]').click()
 #     driver.find_element_by_xpath('//*[@text="使用指纹"]').click()
