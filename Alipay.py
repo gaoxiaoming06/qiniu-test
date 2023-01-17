@@ -29,8 +29,8 @@ if driver.is_locked():
     driver.find_element_by_xpath('//*[@class="android.widget.EditText"]').send_keys("gjh170507")
     driver.press_keycode(66)
 
-time.sleep(16)
 if driver.current_activity == "com.ali.user.mobile.loginupgrade.activity.LoginActivity":
+    driver.tap([(300, 200)])
     driver.find_element_by_xpath('//*[@text="进入支付宝"]').click()
 #     driver.find_element_by_xpath('//*[@text="密码"]').click()
 #     driver.find_element_by_xpath('//*[@text="请输入登录密码"]').send_keys("mwj910809")
