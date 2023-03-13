@@ -46,7 +46,8 @@ driver.find_element_by_xpath('//*[@text="基金"]').click()
 time.sleep(2)
 
 try:
-    driver.find_element_by_xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[2]/android.widget.RelativeLayout/android.widget.RelativeLayout/android.widget.FrameLayout/com.uc.webview.export.WebView/com.uc.webkit.bc/android.webkit.WebView/android.view.View/android.view.View[39]/android.widget.Button[2]").click()
+    driver.find_element_by_xpath(
+        "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[2]/android.widget.RelativeLayout/android.widget.RelativeLayout/android.widget.FrameLayout/com.uc.webview.export.WebView/com.uc.webkit.bc/android.webkit.WebView/android.view.View/android.view.View[39]/android.widget.Button[2]").click()
 except:
     driver.tap([(driver.get_window_size()['width'] / 2, driver.get_window_size()['height'] - 10)])
 time.sleep(2)
@@ -63,7 +64,11 @@ for view1 in viewAll1:
         str111 = ("" + view1.text).replace("%", "").split("涨跌幅:")[1]
         positive = str111[1:2]
         number = str111[2:6]
-        ppp = float(number)
+        ppp = 0
+        try:
+            ppp = float(number)
+        except:
+            ppp = 0
         print("percent: " + view1.text)
         setData.add(view1.text)
         index += 1
@@ -103,7 +108,11 @@ for view1111 in viewAll2:
         str111 = ("" + view1111.text).replace("%", "").split("涨跌幅:")[1]
         positive = str111[1:2]
         number = str111[2:6]
-        ppp = float(number)
+        ppp = 0
+        try:
+            ppp = float(number)
+        except:
+            ppp = 0
         setData.add(view1111.text)
         driver.swipe(100, 800, 100, 550)
         view1111.click()
@@ -140,7 +149,11 @@ for view1111 in viewAll2:
         str111 = ("" + view1111.text).replace("%", "").split("涨跌幅:")[1]
         positive = str111[1:2]
         number = str111[2:6]
-        ppp = float(number)
+        ppp = 0
+        try:
+            ppp = float(number)
+        except:
+            ppp = 0
         setData.add(view1111.text)
         driver.swipe(100, 800, 100, 550)
         view1111.click()
@@ -177,7 +190,11 @@ for view1111 in viewAll2:
         str111 = ("" + view1111.text).replace("%", "").split("涨跌幅:")[1]
         positive = str111[1:2]
         number = str111[2:6]
-        ppp = float(number)
+        ppp = 0
+        try:
+            ppp = float(number)
+        except:
+            ppp = 0
         setData.add(view1111.text)
         driver.swipe(100, 800, 100, 550)
         view1111.click()
@@ -214,7 +231,11 @@ for view1111 in viewAll2:
         str111 = ("" + view1111.text).replace("%", "").split("涨跌幅:")[1]
         positive = str111[1:2]
         number = str111[2:6]
-        ppp = float(number)
+        ppp = 0
+        try:
+            ppp = float(number)
+        except:
+            ppp = 0
         setData.add(view1111.text)
         driver.swipe(100, 800, 100, 550)
         view1111.click()
@@ -251,7 +272,11 @@ for view1111 in viewAll2:
         str111 = ("" + view1111.text).replace("%", "").split("涨跌幅:")[1]
         positive = str111[1:2]
         number = str111[2:6]
-        ppp = float(number)
+        ppp = 0
+        try:
+            ppp = float(number)
+        except:
+            ppp = 0
         setData.add(view1111.text)
         driver.swipe(100, 800, 100, 550)
         view1111.click()

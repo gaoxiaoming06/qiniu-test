@@ -83,19 +83,22 @@ while True:
     elif step <= 13:
         checkBank.append(questions[0].get("choices")[4])  # 上海
         amountList = amountListMiddle
-    elif step <= 16:
+    elif step <= 14:
         checkBank.append(questions[0].get("choices")[6])  # 平安
         amountList = amountListLarge
-    elif step <= 16 + countPF:
+    elif step <= 17:
+        checkBank.append(questions[0].get("choices")[0])  # 交通
+        amountList = amountListMicro
+    elif step <= 17 + countPF:
         checkBank.append(questions[0].get("choices")[5])  # 浦发
         amountList = amountListMiddle
-    elif step <= 16 + countPF + 3:
-        if 16 + countPF + 1 == step or len(bankSelf) == 0:
+    elif step <= 17 + countPF + 3:
+        if 17 + countPF + 1 == step or len(bankSelf) == 0:
             bankSelf = prompt(questions=questions)[0]  # 自选银行
         checkBank.append(bankSelf)
         amountList = amountListLarge
     else:
-        if 16 + countPF + 4 == step or len(bankSelf) == 0 or len(amountSelf) == 0:
+        if 17 + countPF + 4 == step or len(bankSelf) == 0 or len(amountSelf) == 0:
             bankSelf = prompt(questions=questions)[0]  # 自选银行
             amountSelf = prompt(questions=questionsAmount)  # 自选金额
         checkBank.append(bankSelf)
@@ -188,8 +191,8 @@ while True:
     time.sleep(6)
     # driver.tap([(driver.get_window_size()['width'] / 2, driver.get_window_size()['height'] - 20)])
     driver.back()
-    #     time.sleep(6)
-    #     driver.back()
+    time.sleep(6)
+    driver.back()
 
     print("------第 " + str(step) + " 次结束------\n")
     step += 1
