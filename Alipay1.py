@@ -50,7 +50,7 @@ while True:
             "message": "请选择一张卡片:",
             "choices": ["交通银行信用卡", "广发银行信用卡", "中信银行信用卡", "光大银行信用卡", "上海银行信用卡",
                         "浦发银行信用卡", "平安银行信用卡", "建设银行信用卡", "招商银行信用卡", "工商银行信用卡",
-                        "兴业银行信用卡", "南京银行信用卡"],
+                        "兴业银行信用卡", "南京银行信用卡", "江苏银行信用卡", "农业银行信用卡"],
             "default": None,
         }
     ]
@@ -76,16 +76,16 @@ while True:
         checkBank.append(questions[0].get("choices")[1])  # 广发
         amountList = amountListSmall
     elif step <= 10:
-        checkBank.append(questions[0].get("choices")[2])  # 中信
+        checkBank.append(questions[0].get("choices")[6])  # 中信 -> 平安
         amountList = amountListLarge
     elif step <= 11:
         checkBank.append(questions[0].get("choices")[3])  # 光大
         amountList = amountListLarge
     elif step <= 13:
-        checkBank.append(questions[0].get("choices")[4])  # 上海
-        amountList = amountListMiddle
+        checkBank.append(questions[0].get("choices")[6])  # 上海 -> 平安
+        amountList = amountListLarge
     elif step <= 14:
-        checkBank.append(questions[0].get("choices")[6])  # 平安
+        checkBank.append(questions[0].get("choices")[13])  # 农业
         amountList = amountListLarge
     elif step <= 17:
         checkBank.append(questions[0].get("choices")[0])  # 交通
@@ -188,7 +188,16 @@ while True:
         print("信用卡额度用完...")
         break
 
-    driver.tap([(912, 822)])
+    # 是否领积分校验
+    # viewResIntegral = driver.find_elements_by_class_name("android.widget.TextView")
+    # checkIntegral = bool()
+    # for resIntegral in viewResIntegral:
+    #     if "支付宝积分" in resIntegral.text:
+    #         checkIntegral = 1
+    #         break
+    # if checkIntegral:
+    #     driver.tap([(912, 822)])
+
     time.sleep(6)
     # driver.tap([(driver.get_window_size()['width'] / 2, driver.get_window_size()['height'] - 20)])
     driver.back()
