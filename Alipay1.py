@@ -37,6 +37,7 @@ if driver.current_activity == "com.ali.user.mobile.loginupgrade.activity.LoginAc
 #     driver.find_element_by_xpath('//*[@text="请输入登录密码"]').send_keys("mwj910809")
 #     driver.find_element_by_xpath('//*[@text="登录"]').click()
 
+count = int(input("请输入循环次数："))
 step = int(input("请输入初始值："))
 countPF = int(input("请输入浦发次数："))
 bankSelf = ""
@@ -206,5 +207,8 @@ while True:
 
     print("------第 " + str(step) + " 次结束------\n")
     step += 1
+    count -= 1
+    if count == 0:
+        break
 
 driver.quit()
