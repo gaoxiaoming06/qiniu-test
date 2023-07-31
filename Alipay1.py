@@ -39,7 +39,7 @@ if driver.current_activity == "com.ali.user.mobile.loginupgrade.activity.LoginAc
 
 count = int(input("请输入循环次数："))
 step = int(input("请输入初始值："))
-countPF = int(input("请输入浦发次数："))
+# countPF = int(input("请输入浦发次数："))
 bankSelf = ""
 amountSelf = ""
 while True:
@@ -73,34 +73,29 @@ while True:
 
     print("------第 " + str(step) + " 次开始------")
 
-    if step <= 5:
-        checkBank.append(questions[0].get("choices")[1])  # 广发
-        amountList = amountListSmall
-    elif step <= 10:
-        checkBank.append(questions[0].get("choices")[6])  # 中信 -> 平安
+    if step <= 3:
+        checkBank.append(questions[0].get("choices")[1])  #广发
         amountList = amountListLarge
-    elif step <= 11:
+    elif step <= 8:
+        checkBank.append(questions[0].get("choices")[2])  #中信
+        amountList = amountListLarge
+    elif step <= 9:
         checkBank.append(questions[0].get("choices")[3])  # 光大
         amountList = amountListLarge
-    elif step <= 13:
-        checkBank.append(questions[0].get("choices")[6])  # 上海 -> 平安
-        amountList = amountListLarge
-    elif step <= 14:
+    elif step <= 10:
         checkBank.append(questions[0].get("choices")[13])  # 农业
         amountList = amountListLarge
-    elif step <= 17:
+    elif step <= 13:
         checkBank.append(questions[0].get("choices")[0])  # 交通
         amountList = amountListMicro
-    elif step <= 17 + countPF:
-        checkBank.append(questions[0].get("choices")[5])  # 浦发
-        amountList = amountListMiddle
-    elif step <= 17 + countPF + 3:
-        if 17 + countPF + 1 == step or len(bankSelf) == 0:
-            bankSelf = prompt(questions=questions)[0]  # 自选银行
-        checkBank.append(bankSelf)
+    elif step <= 14:
+        checkBank.append(questions[0].get("choices")[5])   # 浦发
         amountList = amountListLarge
+    # elif step <= 14 + countPF:
+    #     checkBank.append(questions[0].get("choices")[5])
+    #     amountList = amountListMiddle
     else:
-        if 17 + countPF + 4 == step or len(bankSelf) == 0 or len(amountSelf) == 0:
+        if len(bankSelf) == 0 or len(amountSelf) == 0:
             bankSelf = prompt(questions=questions)[0]  # 自选银行
             amountSelf = prompt(questions=questionsAmount)  # 自选金额
         checkBank.append(bankSelf)
