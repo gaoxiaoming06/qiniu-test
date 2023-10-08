@@ -82,14 +82,17 @@ while True:
     elif step <= 9:
         checkBank.append(questions[0].get("choices")[3])  # 光大
         amountList = amountListLarge
-    elif step <= 10:
+    elif step <= 11:
         checkBank.append(questions[0].get("choices")[13])  # 农业
         amountList = amountListLarge
-    elif step <= 13:
+    elif step <= 14:
         checkBank.append(questions[0].get("choices")[0])  # 交通
         amountList = amountListMicro
-    elif step <= 14:
+    elif step <= 15:
         checkBank.append(questions[0].get("choices")[5])   # 浦发
+        amountList = amountListLarge
+    elif step <= 16:
+        checkBank.append(questions[0].get("choices")[12])   # 江苏
         amountList = amountListLarge
     # elif step <= 14 + countPF:
     #     checkBank.append(questions[0].get("choices")[5])
